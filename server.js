@@ -24,16 +24,13 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 // Set the view engine to EJS
 // Serv e static assets from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Set the views directory for rendering
 app.set('views', path.join(__dirname, 'views'));
 
-// Set up EJS as the view engine
-app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// app.use('/public', express.static(process.cwd() + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.route('/_api/package.json')
   .get(function(req, res, next) {
